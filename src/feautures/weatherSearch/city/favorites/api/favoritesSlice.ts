@@ -6,7 +6,7 @@ interface InitState {
 }
 
 const initialState: InitState = {
-  savedCities: [{ cityName: "Moscow", id: 524901 }],
+  savedCities: [],
 };
 
 const favoritesSlice = createSlice({
