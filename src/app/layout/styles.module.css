@@ -1,0 +1,9 @@
+.section {
+  background: linear-gradient(to top, #6d6d6d, #4b4646);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.main {
+  flex-grow: 1;
+}
