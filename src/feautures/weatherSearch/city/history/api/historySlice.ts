@@ -6,7 +6,7 @@ type InitState = {
 };
 
 const initialState: InitState = {
-  historyCities: [],
+  historyCities: JSON.parse(localStorage.getItem("favorites") || "[]"),
 };
 const historySlice = createSlice({
   name: "historyCity",
@@ -15,7 +15,7 @@ const historySlice = createSlice({
     addHistoryCity: (state, action) => {
       const { id, cityName } = action.payload;
       if (!state.historyCities.some((historyCity) => historyCity.id === id)) {
-        state.historyCities.push({ id, cityName });
+        state.historyCities.unshift({ id, cityName });
       }
     },
     removeHistoryCities: (state) => {

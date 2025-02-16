@@ -6,7 +6,7 @@ interface InitState {
 }
 
 const initialState: InitState = {
-  savedCities: [],
+  savedCities: JSON.parse(localStorage.getItem("favorites") || "[]"),
 };
 
 const favoritesSlice = createSlice({

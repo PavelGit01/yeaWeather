@@ -6,14 +6,13 @@ import {
   addSavedCity,
   removeSavedCity,
 } from "@/feautures/weatherSearch/city/favorites/api/favoritesSlice";
+import { useLocalStorage } from "@/shared/hooks/useLocalStorage";
+import { City } from "@/shared/types";
 
-type Props = {
-  id: number;
-  cityName: string;
-};
-
-const LikedButton = ({ id, cityName }: Props) => {
+const LikedButton = ({ id, cityName }: City) => {
   const savedCities = useAppSelector((state) => state.favorites.savedCities);
+
+  const [_, setLocal] = useLocalStorage<[] | City>("favorites");
 
   const dispatch = useAppDispatch();
 
@@ -22,8 +21,10 @@ const LikedButton = ({ id, cityName }: Props) => {
   const handleClick = () => {
     if (isFavorite) {
       dispatch(removeSavedCity(id));
+      setLocal(savedCities.filter((city) => city.id !== id));
     } else {
       dispatch(addSavedCity({ id, cityName }));
+      setLocal([...savedCities, { id, cityName }]);
     }
   };
 

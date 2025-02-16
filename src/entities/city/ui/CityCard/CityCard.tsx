@@ -5,9 +5,11 @@ import { CityNameInfo } from "./CityNameInfo";
 import { CityTempInfo } from "./CityTempInfo";
 import { CityExtraInfo } from "./CityExtraInfo";
 import { CircleLoader } from "@/shared/loaders";
-import { useAppDispatch } from "@/app/appStore";
+import { useAppDispatch, useAppSelector } from "@/app/appStore";
 import { addHistoryCity } from "@/feautures/weatherSearch/city/history/api/historySlice";
 import styles from "./styles.module.css";
+import { useLocalStorage } from "@/shared/hooks/useLocalStorage";
+import { City } from "@/shared/types";
 
 type Props = {
   cityName: string;
@@ -20,9 +22,14 @@ const CityCard: React.FC<Props> = memo(({ cityName, type = "card" }) => {
 
   const dispatch = useAppDispatch();
 
+  const [_, setLocalStorage] = useLocalStorage<[] | City>("history");
+
+  const historyCity = useAppSelector((state) => state.history.historyCities);
+
   useEffect(() => {
     if (isSuccess && type === "banner") {
       dispatch(addHistoryCity({ id: data.id, cityName }));
+      setLocalStorage([...historyCity, { id: data.id, cityName }]);
     }
   }, [data, cityName]);
 
