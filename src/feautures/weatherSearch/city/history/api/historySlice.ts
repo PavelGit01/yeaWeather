@@ -6,7 +6,7 @@ type InitState = {
 };
 
 const initialState: InitState = {
-  historyCities: JSON.parse(localStorage.getItem("favorites") || "[]"),
+  historyCities: JSON.parse(localStorage.getItem("history") || "[]"),
 };
 const historySlice = createSlice({
   name: "historyCity",
