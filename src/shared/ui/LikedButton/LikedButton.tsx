@@ -24,7 +24,9 @@ const LikedButton = ({ id, cityName }: City) => {
       setLocal(savedCities.filter((city) => city.id !== id));
     } else {
       dispatch(addSavedCity({ id, cityName }));
-      setLocal([...savedCities, { id, cityName }]);
+      if (!savedCities.some((savedCity) => savedCity.id === id)) {
+        setLocal([{ id, cityName }, ...savedCities]);
+      }
     }
   };
 

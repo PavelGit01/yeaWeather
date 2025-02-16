@@ -16,7 +16,7 @@ const favoritesSlice = createSlice({
     addSavedCity: (state, action) => {
       const { id, cityName } = action.payload;
       if (!state.savedCities.some((savedCity) => savedCity.id === id)) {
-        state.savedCities.push({ id, cityName });
+        state.savedCities.unshift({ id, cityName });
       }
     },
     removeSavedCity: (state, action) => {
