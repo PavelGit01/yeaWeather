@@ -15,12 +15,15 @@ const historySlice = createSlice({
     addHistoryCity: (state, action) => {
       const { id, cityName } = action.payload;
       if (!state.historyCities.some((historyCity) => historyCity.id === id)) {
+        state.historyCities = state.historyCities.filter(
+          (city) => city.id !== id
+        );
         state.historyCities.unshift({ id, cityName });
       }
     },
     removeHistoryCities: (state) => {
       state.historyCities = [];
-    },
+    }, 
   },
 });
 
