@@ -9,6 +9,8 @@ import { City } from "@/shared/types";
 const WeatherHistory = () => {
   const historyCities = useAppSelector((state) => state.history.historyCities);
 
+  console.log(historyCities);
+
   const [_, setLocal] = useLocalStorage<[] | City>("history");
 
   const dispatch = useAppDispatch();

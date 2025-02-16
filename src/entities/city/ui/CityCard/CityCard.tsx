@@ -30,10 +30,11 @@ const CityCard: React.FC<Props> = memo(({ cityName, type = "card" }) => {
     if (isSuccess && type === "banner") {
       dispatch(addHistoryCity({ id: data.id, cityName }));
 
-      setLocalStorage([
-        { id: data.id, cityName },
-        ...historyCity.filter((city) => city.id !== data.id),
-      ]);
+      const updatedHistoryCity = historyCity.filter(
+        (city) => city.id !== data.id
+      );
+
+      setLocalStorage([{ id: data.id, cityName }, ...updatedHistoryCity]);
     }
   }, [data, cityName]);
 

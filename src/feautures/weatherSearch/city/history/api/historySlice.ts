@@ -14,16 +14,16 @@ const historySlice = createSlice({
   reducers: {
     addHistoryCity: (state, action) => {
       const { id, cityName } = action.payload;
-      if (!state.historyCities.some((historyCity) => historyCity.id === id)) {
-        state.historyCities = state.historyCities.filter(
-          (city) => city.id !== id
-        );
-        state.historyCities.unshift({ id, cityName });
-      }
+
+      const updatedHistoryCities = state.historyCities.filter(
+        (city) => city.id !== id
+      );
+
+      state.historyCities = [{ id, cityName }, ...updatedHistoryCities];
     },
     removeHistoryCities: (state) => {
       state.historyCities = [];
-    }, 
+    },
   },
 });
 
