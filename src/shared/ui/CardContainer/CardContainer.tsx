@@ -1,17 +1,13 @@
 import { ReactNode } from "react";
 import styles from "./styles.module.css";
 
-type Props = {
+interface Props {
   children: ReactNode;
   type?: "card" | "banner";
   className?: string;
 };
 
-const CardContainer: React.FC<Props> = ({
-  children,
-  type = "card",
-  className,
-}) => {
+const CardContainer = ({ children, type = "card", className }: Props) => {
   return (
     <article
       className={`${className ?? ""} ${styles.container} ${

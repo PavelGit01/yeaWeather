@@ -17,8 +17,3 @@
 .cityExtraInfo {
   font-size: 11px;
 }
-.error {
-  justify-content: center;
-  text-align: center;
-  background: linear-gradient(to top, #ff4f4f, #630707);
-}

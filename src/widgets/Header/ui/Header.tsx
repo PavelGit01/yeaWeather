@@ -1,14 +1,14 @@
 import { NavBar } from "@/feautures/navigations";
-import { ContainerWrapper, Logo } from "@/shared/ui";
+import { Logo } from "@/shared/ui";
 import styles from "./styles.module.css";
 
-const Header: React.FC = () => {
+const Header = () => {
   return (
     <header className={styles.header}>
-      <ContainerWrapper className={styles.container}>
+      <div className={`wrapper ${styles.container}`}>
         <Logo />
         <NavBar />
-      </ContainerWrapper>
+      </div>
     </header>
   );
 };

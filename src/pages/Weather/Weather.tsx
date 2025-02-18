@@ -1,6 +1,6 @@
-import { LocationWeather } from "@/feautures/weatherSearch";
-import { CityList } from "@/widgets";
 import { useAppSelector } from "@/app/appStore";
+import { CityList, LocationWeather } from "@/widgets";
+import { EmptyComponent } from "@/shared/ui";
 import styles from "./styles.module.css";
 
 const Weather = () => {
@@ -11,7 +11,9 @@ const Weather = () => {
       <LocationWeather />
       <CityList
         cityList={savedCities}
-        emptyText="Список избранных городов пуст."
+        emptyComponent={
+          <EmptyComponent>Список избранного пуст.</EmptyComponent>
+        }
       />
     </div>
   );

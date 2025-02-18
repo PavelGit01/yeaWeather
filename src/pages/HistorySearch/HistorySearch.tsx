@@ -1,31 +1,25 @@
 import { useAppDispatch, useAppSelector } from "@/app/appStore";
 import { CityList } from "@/widgets";
-import { Button } from "@/shared/ui";
-import { removeHistoryCities } from "@/feautures/weatherSearch/city/history/api/historySlice";
+import { removeHistoryCities } from "@/entities/weather/history/api/historySlice";
+import { EmptyComponent } from "@/shared/ui";
 import styles from "./styles.module.css";
-import { useLocalStorage } from "@/shared/hooks/useLocalStorage";
-import { City } from "@/shared/types";
 
 const WeatherHistory = () => {
   const historyCities = useAppSelector((state) => state.history.historyCities);
 
-  console.log(historyCities);
-
-  const [_, setLocal] = useLocalStorage<[] | City>("history");
-
   const dispatch = useAppDispatch();
-
-  const handleRemoveHistory = () => {
-    dispatch(removeHistoryCities());
-    setLocal([]);
-  };
 
   return (
     <div className={styles.container}>
-      <Button onClick={handleRemoveHistory}>Очистить историю поиска.</Button>
+      <button
+        onClick={() => dispatch(removeHistoryCities())}
+        className={styles.resetButton}
+      >
+        Очистить историю поиска
+      </button>
       <CityList
         cityList={historyCities}
-        emptyText="Вы пока ничего не искали."
+        emptyComponent={<EmptyComponent>Список поиска пуст.</EmptyComponent>}
       />
     </div>
   );

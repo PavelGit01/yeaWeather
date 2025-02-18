@@ -1,26 +1,47 @@
+import { ReactNode } from "react";
+import { LikedButton, WeatherFetcher } from "@/feautures/weather";
 import { CityCard } from "@/entities/city";
 import { City } from "@/shared/types";
 import styles from "./styles.module.css";
 
-type Props = {
+interface Props {
   cityList: City[];
-  emptyText: string;
-};
+  emptyComponent: ReactNode;
+}
 
-const CityList: React.FC<Props> = ({ cityList, emptyText }) => {
+const CityList = ({ cityList, emptyComponent }: Props) => {
   return (
     <section className={styles.sliderContainer}>
       {cityList.length > 0 ? (
-        <>
-          {cityList.map(({ cityName, id }) => (
-            <CityCard type="card" key={id} cityName={cityName} />
+        <ul className={styles.cardList}>
+          {cityList.map(({ name, id }) => (
+            <CityList.Item key={id} name={name} id={id} />
           ))}
-        </>
+        </ul>
       ) : (
-        <h3 className={styles.emptyFavoriteList}>{emptyText}</h3>
+        emptyComponent
       )}
     </section>
   );
 };
 
 export default CityList;
+
+CityList.Item = ({ name, id }: City) => {
+  return (
+    <li>
+      <WeatherFetcher
+        name={name}
+        type="card"
+        render={(data) => (
+          <CityCard
+            type="card"
+            name={name}
+            likedButton={<LikedButton name={name} id={id} />}
+            weatherData={data}
+          />
+        )}
+      />
+    </li>
+  );
+};

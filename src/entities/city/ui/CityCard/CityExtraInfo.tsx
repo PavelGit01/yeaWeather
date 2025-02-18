@@ -1,10 +1,9 @@
-import React from "react";
 import styles from "./styles.module.css";
 import { Weather } from "@/shared/types";
 
-type Props = Pick<Weather, "coord" | "visibility" | "main">;
+interface Props extends Pick<Weather, "coord" | "visibility" | "main"> {}
 
-export const CityExtraInfo: React.FC<Props> = ({ coord, main, visibility }) => {
+export const CityExtraInfo = ({ coord, main, visibility }: Props) => {
   return (
     <div className={styles.cityExtraInfo}>
       <p>Видимость: {visibility / 1000} км.</p>

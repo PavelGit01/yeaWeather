@@ -3,13 +3,13 @@ import { LiaWindSolid } from "react-icons/lia";
 import styles from "./styles.module.css";
 import { Img } from "@/shared/ui";
 
-type Props = {
+interface Props {
   temp: number;
   icon: string;
   windSpeed: number;
-};
+}
 
-export const CityTempInfo: React.FC<Props> = ({ temp, icon, windSpeed }) => {
+export const CityTempInfo = ({ temp, icon, windSpeed }: Props ) => {
   return (
     <div className={styles.cityTempInfo}>
       <p>

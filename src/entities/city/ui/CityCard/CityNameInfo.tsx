@@ -1,10 +1,12 @@
 import { LuMapPin } from "react-icons/lu";
 import styles from "./styles.module.css";
-import { LikedButton } from "@/shared/ui";
-import { City } from "@/shared/types";
+import { ReactNode } from "react";
+interface Props {
+  cityName: string;
+  likedButton: ReactNode;
+}
 
-export const CityNameInfo: React.FC<City> = ({ cityName, id }) => {
-  
+export const CityNameInfo = ({ cityName, likedButton }: Props) => {
   const formattedCityName =
     cityName.charAt(0).toUpperCase() + cityName.slice(1).toLowerCase();
 
@@ -13,7 +15,7 @@ export const CityNameInfo: React.FC<City> = ({ cityName, id }) => {
       <p>
         {formattedCityName} <LuMapPin />
       </p>
-      <LikedButton id={id} cityName={cityName} />
+      {likedButton}
     </div>
   );
 };

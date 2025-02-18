@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { rootReducer } from "./appReducer";
-import { weatherApi } from "@/feautures/weatherSearch/api/api";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import { weatherApi } from "@/entities/weather/api/api";
 
 const store = configureStore({
   reducer: rootReducer,

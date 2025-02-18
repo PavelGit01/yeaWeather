@@ -1,10 +1,4 @@
-type Props = {
-  type?: string;
-  placeholder?: string;
-  className?: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-};
+import { InputHTMLAttributes } from "react";
 
 const Input = ({
   placeholder,
@@ -12,7 +6,7 @@ const Input = ({
   type = "text",
   value,
   onChange,
-}: Props) => {
+}: InputHTMLAttributes<HTMLInputElement>) => {
   return (
     <input
       type={type}

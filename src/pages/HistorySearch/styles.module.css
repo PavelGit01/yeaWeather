@@ -3,3 +3,18 @@
   flex-direction: column;
   gap: 40px;
 }
+.resetButton {
+  width: fit-content;
+  padding: 5px 10px;
+  background-color: #000000;
+  color: white;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.resetButton:hover {
+  background-color: #313131;
+}
+.resetButton:active{
+  background-color: #000000;
+}

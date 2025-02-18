@@ -4,21 +4,16 @@
   padding: 20px;
   border-radius: 10px;
   height: 470px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  row-gap: 30px;
-  overflow-y: auto;
-  justify-items: center;
+  overflow-y: auto
 }
 
 .sliderContainer::-webkit-scrollbar {
   display: none;
 }
-
-.emptyFavoriteList {
-  color: white;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.cardList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 30px;
+  overflow-y: auto;
+  justify-items: center;
 }
